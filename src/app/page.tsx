@@ -1,4 +1,4 @@
-import BookList from "./components/bookList";
+import BookList from "../components/bookList";
 
 export default async function Home() {
   return (

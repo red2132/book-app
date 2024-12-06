@@ -1,4 +1,4 @@
-import { BookListInfo } from "../../../types";
+import { BookListInfo } from "../../types";
 import BookItem from "./bookItem";
 
 export default async function BookList({ page = 1 }: { page?: number }) {

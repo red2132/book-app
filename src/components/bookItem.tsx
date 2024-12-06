@@ -1,4 +1,4 @@
-import { Book } from "../../../types";
+import { Book } from "../../types";
 
 export default function BookItem({ book }: { book: Book }) {
   return (
