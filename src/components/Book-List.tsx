@@ -2,9 +2,19 @@ import { getBookListAction } from "@/actions/get-book-list-actions";
 import { BookListInfo } from "../../types";
 import BookItem from "./Book-Item";
 import Pagination from "./Pagination";
+import { getSearchBookListAction } from "@/actions/get-search-book-action";
 
-export default async function BookList({ page = 1 }: { page?: number }) {
-  const responseInfo = await getBookListAction(page);
+export default async function BookList({
+  page = 1,
+  query,
+}: {
+  page?: number;
+  query?: string;
+}) {
+  console.log(query);
+  const responseInfo = query
+    ? await getSearchBookListAction(page, query)
+    : await getBookListAction(page);
   const { currentPage, totalPages, totalItems, books }: BookListInfo =
     responseInfo.data;
   return (
