@@ -6,12 +6,14 @@ type Book = {
   quantity: number;
 };
 
-type BookListInfo = {
+type PageInfo = {
   currentPage: number;
   totalPages: number;
+};
+type BookListInfo = {
   totalItems: number;
   books: Book[];
-};
+} & PageInfo;
 
 type GetBookListResponse = {
   success: boolean;
@@ -19,4 +21,4 @@ type GetBookListResponse = {
   error?: string;
 };
 
-export type { Book, BookListInfo, GetBookListResponse };
+export type { Book, BookListInfo, PageInfo, GetBookListResponse };
