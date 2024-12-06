@@ -36,7 +36,6 @@ export async function GET(req: Request) {
     totalItems: filteredData.length,
     books: paginatedData,
   };
-  console.log();
 
   return NextResponse.json({
     success: true,

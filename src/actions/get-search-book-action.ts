@@ -5,7 +5,7 @@ export async function getSearchBookListAction(page: number, query: string) {
   );
 
   if (!response.ok) {
-    throw new Error(`리뷰 불러오기 실패: ${response.statusText}`);
+    throw new Error(`도서정보 불러오기 실패: ${response.statusText}`);
   }
   return await response.json();
 }

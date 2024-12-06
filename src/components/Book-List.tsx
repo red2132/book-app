@@ -11,7 +11,6 @@ export default async function BookList({
   page?: number;
   query?: string;
 }) {
-  console.log(query);
   const responseInfo = query
     ? await getSearchBookListAction(page, query)
     : await getBookListAction(page);
