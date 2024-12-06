@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { books } from "../books/route";
+import { getBooks } from "../data";
 
 // 책 검색 API (author와 title 기반)
 export async function GET(req: Request) {
@@ -19,7 +19,7 @@ export async function GET(req: Request) {
   }
 
   // 데이터 필터링(검색)
-  const filteredData = books.filter(
+  const filteredData = getBooks().filter(
     (item) =>
       item.title.toLowerCase().includes((query as string).toLowerCase()) ||
       item.author.toLowerCase().includes((query as string).toLowerCase())

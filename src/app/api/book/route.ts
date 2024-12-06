@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { books } from "../books/route";
+import { getBookById } from "../data";
 
 // 책 상세 정보 출력 API (ID 기반)
 export async function GET(req: NextRequest) {
@@ -7,7 +7,7 @@ export async function GET(req: NextRequest) {
   const id = searchParams.get("id");
 
   if (id) {
-    const book = books.find((b) => b.id === parseInt(id));
+    const book = getBookById(Number(id));
     if (!book) {
       return NextResponse.json(
         { success: false, message: `해당하는 아이디가 없습니다` },

@@ -9,9 +9,9 @@ export default function BookItem({ book }: { book: Book }) {
         href={`/book/${book.id}`}
         aria-label={`View details for ${book.title}`}
       >
-        <div className="w-2/12 font-medium text-gray-700">{book.id}</div>
+        <div className="w-1/12 font-medium text-gray-700">{book.id}</div>
         <div className="w-5/12 truncate text-gray-800">{book.title}</div>
-        <div className="w-2/12 text-gray-600">{book.author}</div>
+        <div className="w-3/12 text-gray-600">{book.author}</div>
       </Link>
       <button
         className="w-1/12 px-3 py-1 bg-red-600 text-white rounded-lg shadow hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 transition mb-2"

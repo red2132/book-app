@@ -1,7 +1,7 @@
 export async function getBookListAction(page: number) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/api/books?page=${page}`,
-    { cache: "force-cache" }
+    { next: { tags: [`bookPage`] } }
   );
 
   if (!response.ok) {
