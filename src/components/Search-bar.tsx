@@ -19,7 +19,11 @@ export default function SearchBar() {
   };
 
   const onSubmit = () => {
-    if (!search || query === search) return;
+    if (query === search) return;
+    if (search === "") {
+      alert("검색어를 입력해 주세요");
+      return;
+    }
     router.push(`/search?query=${search}`);
   };
 
