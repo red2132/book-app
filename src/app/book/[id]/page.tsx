@@ -6,6 +6,7 @@ import BackButton from "@/components/Back-Button";
 async function BookDetail({ bookId }: { bookId: number }) {
   const responseInfo = await getBookDetailAction(bookId);
   const bookInfo: Book = responseInfo.data;
+  const bookInfoJson = JSON.stringify(bookInfo);
   return (
     <div>
       <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-6 space-y-4">
@@ -24,7 +25,12 @@ async function BookDetail({ bookId }: { bookId: number }) {
         </div>
         <div className="flex justify-end mt-4 space-x-2">
           <BackButton />
-          <Link href={`/book/${bookId}/update`}>
+          <Link
+            href={{
+              pathname: `/book/${bookId}/update`,
+              query: { bookInfo: bookInfoJson },
+            }}
+          >
             <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
               상세정보 수정
             </button>
