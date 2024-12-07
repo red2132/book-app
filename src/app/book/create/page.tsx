@@ -18,7 +18,7 @@ export default function CreateBookPage() {
     if (state?.status) {
       router.push("/");
     }
-  }, [state]);
+  }, [router, state]);
 
   return (
     <form

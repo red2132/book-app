@@ -23,7 +23,7 @@ export default function UpdateBookUi({ bookInfo }: { bookInfo: Book }) {
     if (state?.status) {
       router.back();
     }
-  }, [state]);
+  }, [router, state]);
 
   return (
     <form
