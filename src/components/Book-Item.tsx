@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Book } from "../../types";
+import BookItemDeleteButton from "./Book-Item-delete-button";
 
 export default function BookItem({ book }: { book: Book }) {
   return (
@@ -13,12 +14,9 @@ export default function BookItem({ book }: { book: Book }) {
         <div className="w-5/12 truncate text-gray-800">{book.title}</div>
         <div className="w-3/12 text-gray-600">{book.author}</div>
       </Link>
-      <button
-        className="w-1/12 px-3 py-1 bg-red-600 text-white rounded-lg shadow hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 transition mb-2"
-        aria-label={`Delete book ${book.title}`}
-      >
-        삭제
-      </button>
+      <div className="w-1/12">
+        <BookItemDeleteButton bookId={book.id} bookTitle={book.title} />
+      </div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getBookById } from "../data";
+import { deleteBook, getBookById } from "../data";
 
 // 책 상세 정보 출력 API (ID 기반)
 export async function GET(req: NextRequest) {
@@ -24,4 +24,21 @@ export async function GET(req: NextRequest) {
     { success: false, message: `book ID를 확인해 주세요` },
     { status: 404 }
   );
+}
+
+// DELETE 요청: 책 데이터 삭제
+export async function DELETE(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  const id = Number(searchParams.get("id"));
+  if (!id) {
+    return NextResponse.json(
+      { error: "도서 ID가 필요합니다" },
+      { status: 400 }
+    );
+  }
+  deleteBook(id);
+
+  return NextResponse.json({
+    message: `도서 ID ${id}(이)가 삭제되었습니다`,
+  });
 }

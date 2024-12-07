@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { addBook, deleteBook, getBooks } from "../data";
+import { addBook, getBooks } from "../data";
 
 // GET 요청: 책 데이터 목록 반환
 export async function GET(req: Request) {
@@ -56,7 +56,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: "Book added successfully.",
+      message: "성공적으로 도서를 등록했습니다",
       book: newBook,
     });
   } catch (error) {
@@ -69,22 +69,4 @@ export async function POST(req: NextRequest) {
       { status: 400 }
     );
   }
-}
-
-// DELETE 요청: 책 데이터 삭제
-export async function DELETE(req: NextRequest) {
-  const { searchParams } = new URL(req.url);
-  const id = parseInt(searchParams.get("id") || "");
-
-  if (!id) {
-    return NextResponse.json(
-      { error: "ID is required to delete a book." },
-      { status: 400 }
-    );
-  }
-  deleteBook(id);
-
-  return NextResponse.json({
-    message: `Book with ID ${id} deleted successfully.`,
-  });
 }
