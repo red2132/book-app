@@ -19,10 +19,12 @@ export default function BookItemDeleteButton({
   }, [state]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    const confirmDelete = confirm(`댓글을 정말 삭제하시겠습니까?`);
+    const confirmDelete = confirm(
+      `도서 "${bookTitle}"(을)를 정말 삭제하시겠습니까?`
+    );
     if (confirmDelete) {
       const form = e.currentTarget;
-      form.requestSubmit(); // 폼을 강제로 제출
+      form.requestSubmit(); // 폼 제출
     }
   };
 
