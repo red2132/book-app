@@ -1,7 +1,7 @@
 # 도서 관리 프로젝트
 
 ## 프로젝트 실행 방법
-1. 코드를 다운받으시고, cmd창에 npm install을 해서 node_modules를 다운받습니다.  
+1. 코드를 다운받으시고, cmd창에 npm install을 해서 node_modules를 다운받습니다.(node.js가 없으시면 공식 홈페이지에 가서 LTS 버전을 설치하시면 됩니다.)  
 2. .env 파일을 프로젝트 파일 폴더에 넣습니다. [.env 다운 링크](https://drive.google.com/file/d/1orK92R6XfnjhzTl9-IUkGlfiBmT3oepL/view?usp=drive_link)
 4. npm run dev 하시면 개발 모드로 프로젝트를 실행할 수 있습니다. 빌드 배포 버전은 [링크](https://book-app-blue.vercel.app/) 를 누르면 확인하실 수 있습니다.
 
@@ -38,4 +38,7 @@ useState에 검색어(query)를 넣어놓고, 검색 버튼을 클릭하거나 E
 해당 부분은 서버 컴포넌트(page.tsx)와 클라이언트 컴포넌트(ui.tsx)로 나눠서 구현했습니다.  
 우선 page.tsx에서 getBookDetailAction로 상세정보를 받아온 후, 그걸 props로 ui.tsx에 넘겨줍니다.  
 ui.tsx는 넘겨받은 props를 토대로 기본 정보를 세팅하고, useActionState를 통해 폼 데이터를 넘겨줍니다.
+
+#### 기타 페이지 구현(not-found.tsx, error.tsx)
+not found이거나 에러가 발생했을 때의 화면도 구현했습니다.
 
