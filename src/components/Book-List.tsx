@@ -29,9 +29,11 @@ export default async function BookList({
           <div className="w-3/12"></div>
         </div>
         {/* Book Rows */}
-        {books.map((book) => (
-          <BookItem book={book} key={book.id} />
-        ))}
+        {books.length > 0 ? (
+          books.map((book) => <BookItem book={book} key={book.id} />)
+        ) : (
+          <div className="flex justify-center mt-2">검색된 도서가 없습니다</div>
+        )}
       </div>
 
       <Link href={`/book/create`}>

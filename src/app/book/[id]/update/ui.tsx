@@ -1,12 +1,17 @@
 "use client";
 
-import { createBookAction } from "@/actions/create-book-actions";
-import BackButton from "@/components/Back-Button";
 import { useRouter } from "next/navigation";
-import { useActionState, useEffect } from "react";
+import { useActionState, useEffect, useState } from "react";
+import { Book } from "../../../../../types";
+import { updateBookAction } from "@/actions/update-book-actions";
+import BackButton from "@/components/Back-Button";
 
-export default function CreateBookPage() {
-  const [state, formAction, isPending] = useActionState(createBookAction, null);
+export default function UpdateBookUi({ bookInfo }: { bookInfo: Book }) {
+  const [state, formAction, isPending] = useActionState(updateBookAction, null);
+  const [title, setTitle] = useState(bookInfo.title);
+  const [author, setAuthor] = useState(bookInfo.author);
+  const [quantity, setQuantity] = useState(bookInfo.quantity);
+  const [detail, setDetail] = useState(bookInfo.detail);
   const router = useRouter();
   useEffect(() => {
     if (state && !state.status) {
@@ -16,7 +21,7 @@ export default function CreateBookPage() {
 
   useEffect(() => {
     if (state?.status) {
-      router.push("/");
+      router.back();
     }
   }, [state]);
 
@@ -25,8 +30,8 @@ export default function CreateBookPage() {
       className="max-w-md mx-auto bg-white rounded-lg shadow-md p-6 space-y-4"
       action={formAction}
     >
-      <h1 className="text-xl font-semibold text-gray-800">새로운 도서 추가</h1>
-
+      <h1 className="text-xl font-semibold text-gray-800">도서 정보 수정</h1>
+      <input type="text" name="id" value={bookInfo.id} hidden readOnly />
       {/* Book Title */}
       <div>
         <label
@@ -40,6 +45,8 @@ export default function CreateBookPage() {
           type="text"
           id="title"
           name="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
         />
       </div>
@@ -57,6 +64,8 @@ export default function CreateBookPage() {
           type="text"
           id="author"
           name="author"
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
         />
       </div>
@@ -74,6 +83,8 @@ export default function CreateBookPage() {
           type="number"
           id="quantity"
           name="quantity"
+          value={quantity}
+          onChange={(e) => setQuantity(Number(e.target.value))}
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
         />
       </div>
@@ -91,6 +102,8 @@ export default function CreateBookPage() {
           id="detail"
           name="detail"
           rows={4}
+          value={detail}
+          onChange={(e) => setDetail(e.target.value)}
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
         ></textarea>
       </div>

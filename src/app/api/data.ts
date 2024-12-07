@@ -98,7 +98,7 @@ export const addBook = async (book: Book) => {
   await books.push({ ...book, id: ++indexNumber });
 };
 
-export const updateBook = (id: number, updatedBook: Book) => {
+export const updateBook = (id: number, updatedBook: Omit<Book, "id">) => {
   books = books.map((book) =>
     book.id === id ? { ...book, ...updatedBook } : book
   );

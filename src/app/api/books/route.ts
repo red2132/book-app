@@ -3,7 +3,6 @@ import { addBook, getBooks } from "../data";
 
 // GET 요청: 책 데이터 목록 반환
 export async function GET(req: Request) {
-  //링크 양식(예시) : http://localhost:3000/api/books?page=1
   const { searchParams } = new URL(req.url);
   const limit = 10; // 페이지당 항목 수
   const page = parseInt(searchParams.get("page") || "1", limit); // 현재 페이지
