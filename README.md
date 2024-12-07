@@ -2,8 +2,9 @@
 
 ## 프로젝트 실행 방법
 1. 코드를 다운받으시고, cmd창에 npm install을 해서 node_modules를 다운받습니다.(node.js가 없으시면 공식 홈페이지에 가서 LTS 버전을 설치하시면 됩니다.)  
-2. .env 파일을 프로젝트 파일 폴더에 넣습니다. [.env 다운 링크](https://drive.google.com/file/d/1orK92R6XfnjhzTl9-IUkGlfiBmT3oepL/view?usp=drive_link)
-4. npm run dev 하시면 개발 모드로 프로젝트를 실행할 수 있습니다. 빌드 배포 버전은 [링크](https://book-app-blue.vercel.app/) 를 누르면 확인하실 수 있습니다.
+2. .env 파일을 다운받아 압축을 풀고 프로젝트 파일 폴더에 넣습니다. [.env 다운 링크](https://drive.google.com/file/d/1xSVbl0HXshfLz2CoOiiqLHIUFDPTEqCU/view?usp=sharing)
+3. npm run build로 프로젝트를 빌드합니다.
+4. npm run start로 프로젝트를 실행할 수 있습니다. 배포 버전은 [링크](https://book-app-blue.vercel.app/) 를 누르면 확인하실 수 있습니다.
 
 ## 프로젝트 설명
 ![book-project-Chrome-2024-12-07-18-08-10](https://github.com/user-attachments/assets/8fe49ae6-a00b-4057-98e2-c1bd49227863)
