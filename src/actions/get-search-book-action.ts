@@ -1,7 +1,7 @@
 export async function getSearchBookListAction(page: number, query: string) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/api/search?page=${page}&query=${query}`,
-    { cache: "force-cache" }
+    { next: { tags: [`bookPage`] } }
   );
 
   if (!response.ok) {
