@@ -17,7 +17,7 @@ export default function UpdateBookUi({ bookInfo }: { bookInfo: Book }) {
     if (state && !state.status) {
       alert(state.error);
     }
-  });
+  }, [state]);
 
   useEffect(() => {
     if (state?.status) {

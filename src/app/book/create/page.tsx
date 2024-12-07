@@ -12,7 +12,7 @@ export default function CreateBookPage() {
     if (state && !state.status) {
       alert(state.error);
     }
-  });
+  }, [state]);
 
   useEffect(() => {
     if (state?.status) {
