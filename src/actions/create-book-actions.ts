@@ -1,7 +1,6 @@
 "use server";
 
 import { revalidateTag } from "next/cache";
-import { redirect } from "next/navigation";
 
 export async function createBookAction(_: any, formData: FormData) {
   const title = formData.get("title")?.toString();
@@ -19,7 +18,7 @@ export async function createBookAction(_: any, formData: FormData) {
   if (isNaN(Number(quantity))) {
     return {
       status: false,
-      error: "숫자를 입력해 주세요",
+      error: "수량은 숫자를 입력해 주세요",
     };
   }
 
