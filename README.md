@@ -10,6 +10,12 @@
 
 ## 프로젝트 설명
 
+### 프로젝트 환경
+
+framework: Next.js(15), tailwind(3.4.1)
+library: react(19RC)
+test: Jest(29.7.0)
+
 ![book-project-Chrome-2024-12-07-18-08-10](https://github.com/user-attachments/assets/8fe49ae6-a00b-4057-98e2-c1bd49227863)
 
 ### 1. api 구현

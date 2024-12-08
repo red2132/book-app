@@ -10,16 +10,22 @@ export default function SearchBar() {
 
   const query = searchParams.get("query");
 
+  // query가 있을 경우 검색어에 query 데이터 세팅
   useEffect(() => {
     setSearch(query || "");
   }, [query]);
 
+  /** 검색어 세팅 */
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
 
+  /** 검색어 제출 함수 */
   const onSubmit = () => {
+    // 검색어가 기존 검색어와 같을 경우 검색X
     if (query === search) return;
+
+    // 검색어가 없을 경우 alert창 출력
     if (search === "") {
       alert("검색어를 입력해 주세요");
       return;
@@ -27,6 +33,7 @@ export default function SearchBar() {
     router.push(`/search?query=${search}`);
   };
 
+  /** 엔터 키 입력 시 onsubmit 호출  */
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       onSubmit();

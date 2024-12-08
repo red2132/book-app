@@ -4,8 +4,11 @@ import Link from "next/link";
 import BackButton from "@/components/Back-Button";
 
 async function BookDetail({ bookId }: { bookId: number }) {
+  // 도서 상세정보 호출
   const responseInfo = await getBookDetailAction(bookId);
   const bookInfo: Book = responseInfo.data;
+
+  // 수정 페이지에 보낼 데이터 JSON화
   const bookInfoJson = JSON.stringify(bookInfo);
   return (
     <div>
@@ -41,15 +44,11 @@ async function BookDetail({ bookId }: { bookId: number }) {
   );
 }
 
-export default async function Page({
+export default async function BookDetailPage({
   params,
 }: {
   params: Promise<{ id: number }>;
 }) {
   const { id } = await params;
-  return (
-    <div>
-      <BookDetail bookId={id} />
-    </div>
-  );
+  return <BookDetail bookId={id} />;
 }

@@ -12,9 +12,12 @@ export default async function BookList({
   page?: number;
   query?: string;
 }) {
+  // query가 있을 경우 검색을, 없으면 기본 도서 리스트 출력
   const responseInfo = query
     ? await getSearchBookListAction(page, query)
     : await getBookListAction(page);
+
+  // 정보 세팅
   const { currentPage, totalPages, totalItems, books }: BookListInfo =
     responseInfo.data;
   return (

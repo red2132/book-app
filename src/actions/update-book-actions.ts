@@ -2,6 +2,7 @@
 
 import { revalidateTag } from "next/cache";
 
+/** 도서 정보 수정 서버 액션 */
 export async function updateBookAction(_: any, formData: FormData) {
   const id = formData.get("id")?.toString();
   const title = formData.get("title")?.toString();
@@ -9,6 +10,7 @@ export async function updateBookAction(_: any, formData: FormData) {
   const quantity = formData.get("quantity")?.toString();
   const detail = formData.get("detail")?.toString();
 
+  // 유효성 검사
   if (!title || !author || !quantity || !detail) {
     return {
       status: false,
@@ -30,7 +32,7 @@ export async function updateBookAction(_: any, formData: FormData) {
     };
   }
 
-  // post api 호출
+  // 도서 수정 put api 호출
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_SERVER_URL}/api/book?id=${id}`,
@@ -43,7 +45,7 @@ export async function updateBookAction(_: any, formData: FormData) {
       throw new Error(response.statusText);
     }
 
-    // 태그를 기준으로 데이터 캐시 재검증
+    // 해당 태그에 해당하는 데이터 캐시 재검증
     await revalidateTag(`bookDetail-${id}`);
 
     return { status: true };

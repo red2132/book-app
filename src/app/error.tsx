@@ -11,6 +11,8 @@ export default function Error({
   reset: () => void;
 }) {
   const router = useRouter();
+
+  // errer 처리
   useEffect(() => {
     console.error(error.message);
   }, [error]);

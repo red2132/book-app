@@ -5,25 +5,29 @@ import { useActionState, useEffect, useState } from "react";
 import { updateBookAction } from "@/actions/update-book-actions";
 import BackButton from "@/components/Back-Button";
 
-export default function UpdateBookUi() {
-  const [state, formAction, isPending] = useActionState(updateBookAction, null);
+export default function UpdateBookPage() {
   const router = useRouter();
+  // form 액션
+  const [state, formAction, isPending] = useActionState(updateBookAction, null);
 
   // searchParam 데이터 세팅
   const searchParams = useSearchParams();
   const bookInfo = JSON.parse(searchParams.get("bookInfo") || "");
 
+  // form 데이터 세팅
   const [title, setTitle] = useState(bookInfo.title);
   const [author, setAuthor] = useState(bookInfo.author);
   const [quantity, setQuantity] = useState(bookInfo.quantity);
   const [detail, setDetail] = useState(bookInfo.detail);
 
+  // 에러 처리
   useEffect(() => {
     if (state && !state.status) {
       alert(state.error);
     }
   }, [state]);
 
+  // 성공 시 이전 화면으로 이동
   useEffect(() => {
     if (state?.status) {
       router.back();

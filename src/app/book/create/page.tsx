@@ -6,14 +6,18 @@ import { useRouter } from "next/navigation";
 import { useActionState, useEffect } from "react";
 
 export default function CreateBookPage() {
-  const [state, formAction, isPending] = useActionState(createBookAction, null);
   const router = useRouter();
+  // form 액션
+  const [state, formAction, isPending] = useActionState(createBookAction, null);
+
+  // 에러 처리
   useEffect(() => {
     if (state && !state.status) {
       alert(state.error);
     }
   }, [state]);
 
+  // 성공시 메인 화면으로 이동
   useEffect(() => {
     if (state?.status) {
       router.push("/");

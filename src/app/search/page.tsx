@@ -11,6 +11,7 @@ export default async function SearchPage({
     page?: string;
   }>;
 }) {
+  // url query에 들어있던 데이터 세팅
   const { query, page } = await searchParams;
   return (
     <div className="max-w-4xl mx-auto p-4">

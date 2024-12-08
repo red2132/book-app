@@ -10,14 +10,17 @@ export default function BookItemDeleteButton({
   bookId: number;
   bookTitle: string;
 }) {
+  // form 액션
   const [state, formAction, isPending] = useActionState(deleteBookAction, null);
 
+  // error 처리
   useEffect(() => {
     if (state && !state.status) {
       alert(state.error);
     }
   }, [state]);
 
+  // 삭제 전 정말 삭제하는지 확인하는 alert 출력
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     const confirmDelete = confirm(
       `도서 "${bookTitle}"(을)를 정말 삭제하시겠습니까?`

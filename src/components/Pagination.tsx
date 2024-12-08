@@ -7,9 +7,11 @@ export default function Pagination({ currentPage, totalPages }: PageInfo) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
+  /** 화면 이동 함수 */
   const movePage = (pageNumber: number) => {
     const params = new URLSearchParams(searchParams);
     params.set("page", pageNumber.toString());
+    // 라우터 이동
     router.push(`${pathname}?${params.toString()}`);
   };
   return (
